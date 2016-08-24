@@ -12,7 +12,7 @@ public class Util {
     private Util() {}
 
     public static String getStringFromResources(final Context context, @RawRes final int rawResource) {
-        final InputStream is = context.getResources().openRawResource(R.raw.redirect);
+        final InputStream is = context.getResources().openRawResource(rawResource);
         try {
             return readStringFromInputStreamAndCloseStream(is, 4048);
         } catch (final IOException e) {
