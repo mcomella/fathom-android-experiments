@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // TODO: 1) Inject fathom into webview viewing page
+        // 2) Figure out if there is a better way to get the source (e.g. XHR). I've had trouble with this in the past.
         final WebView webView = (WebView) findViewById(R.id.webview);
         final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
