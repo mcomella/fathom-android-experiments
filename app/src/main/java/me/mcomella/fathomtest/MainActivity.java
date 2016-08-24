@@ -3,7 +3,9 @@ package me.mcomella.fathomtest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.webkit.ConsoleMessage;
 import android.webkit.ValueCallback;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -21,7 +23,19 @@ public class MainActivity extends AppCompatActivity {
         settings.setJavaScriptEnabled(true);
 
         webView.setWebViewClient(new InjectClient());
+        webView.setWebChromeClient(new ChromeClient());
+
         webView.loadUrl("http://apple.com");
+    }
+
+    // Log javascript errors.
+    public class ChromeClient extends WebChromeClient {
+        @Override
+        public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
+            Log.d("lol", "s: " + consoleMessage.message());
+            Toast.makeText(MainActivity.this, "console: " + consoleMessage.message(), Toast.LENGTH_SHORT).show();
+            return super.onConsoleMessage(consoleMessage);
+        }
     }
 
     public class InjectClient extends WebViewClient {
@@ -29,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
 
-            final String script = "document.location = 'http://kotaku.com'";
+            final String script = "documenta.location = 'http://kotaku.com'";
 
             view.evaluateJavascript(script, new ValueCallback<String>() {
                 @Override
