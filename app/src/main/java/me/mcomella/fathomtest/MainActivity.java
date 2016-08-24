@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public class ChromeClient extends WebChromeClient {
         @Override
         public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
-            Log.d("lol", "s: " + consoleMessage.message());
+            Log.d("lol", consoleMessage.messageLevel() + "> " + consoleMessage.sourceId() + ":" + consoleMessage.lineNumber() + ": " + consoleMessage.message());
             Toast.makeText(MainActivity.this, "console: " + consoleMessage.message(), Toast.LENGTH_SHORT).show();
             return super.onConsoleMessage(consoleMessage);
         }
