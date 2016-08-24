@@ -1,7 +1,7 @@
 package me.mcomella.fathomtest;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.ConsoleMessage;
 import android.webkit.ValueCallback;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
 
-            final String script = "documenta.location = 'http://kotaku.com'";
+            final String script = Util.getStringFromResources(view.getContext(), R.raw.redirect);
 
             view.evaluateJavascript(script, new ValueCallback<String>() {
                 @Override
