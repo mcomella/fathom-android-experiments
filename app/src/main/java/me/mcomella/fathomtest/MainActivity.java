@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         public void onPageFinished(WebView view, String url) {
             super.onPageFinished(view, url);
 
-            final String script = Util.getStringFromResources(view.getContext(), R.raw.redirect);
+            final String script = Util.getStringFromResources(view.getContext(), R.raw.extract);
 
             view.evaluateJavascript(script, new ValueCallback<String>() {
                 @Override

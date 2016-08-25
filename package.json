@@ -1,0 +1,22 @@
+{
+  "name": "fathom-test",
+  "version": "0.0.1",
+  "description": "Using fathom in Android",
+  "main": "js/index.js",
+  "author": "",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "fathom-web": "^1.1.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-polyfill": "^6.13.0",
+    "babel-preset-es2015": "^6.14.0",
+    "webpack": "^1.13.2"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
