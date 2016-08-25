@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
             Log.d("lol", consoleMessage.messageLevel() + "> " + consoleMessage.sourceId() + ":" + consoleMessage.lineNumber() + ": " + consoleMessage.message());
-            Toast.makeText(MainActivity.this, "console: " + consoleMessage.message(), Toast.LENGTH_SHORT).show();
+            if (consoleMessage.messageLevel() == ConsoleMessage.MessageLevel.ERROR) {
+                Toast.makeText(MainActivity.this, "console: " + consoleMessage.message(), Toast.LENGTH_SHORT).show();
+            }
             return super.onConsoleMessage(consoleMessage);
         }
     }
