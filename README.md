@@ -1,8 +1,12 @@
-# Fathom Android
+# Fathom Android Experiments
 A series of experiments to get Mozilla's [fathom][] running in the context of
 native Android apps.
 
 ## Try it
+Install the npm dependencies:
+
+    npm install
+
 Build the fathom code:
 
     npm run build
