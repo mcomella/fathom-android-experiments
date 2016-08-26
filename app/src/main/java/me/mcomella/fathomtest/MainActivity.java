@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.webkit.ConsoleMessage;
+import android.webkit.JavascriptInterface;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -11,6 +12,12 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+/*
+ * Access a fathom context using a visible WebView.
+ *
+ * This is an experiment to see if it can work so there are a lot of bad
+ * practices, such as potential memory leaks.
+ */
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -18,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: 1) Inject fathom into webview viewing page
-        // 2) Figure out if there is a better way to get the source (e.g. XHR). I've had trouble with this in the past.
         final WebView webView = (WebView) findViewById(R.id.webview);
         final WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
+        webView.addJavascriptInterface(new FathomObject(), "java");
 
         webView.setWebViewClient(new InjectClient());
         webView.setWebChromeClient(new ChromeClient());
@@ -52,8 +58,19 @@ public class MainActivity extends AppCompatActivity {
             view.evaluateJavascript(script, new ValueCallback<String>() {
                 @Override
                 public void onReceiveValue(String s) {
-                    Log.d("lol", "s: " + s);
-                    Toast.makeText(MainActivity.this, "Finished: " + s, Toast.LENGTH_SHORT).show();
+                    Log.d("lol", "finished: " + s);
+                }
+            });
+        }
+    }
+
+    public class FathomObject {
+        @JavascriptInterface
+        public void setTitle(final String title) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(MainActivity.this, "Title: " + title, Toast.LENGTH_SHORT).show();
                 }
             });
         }
