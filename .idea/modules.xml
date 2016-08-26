@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FathomTest.iml" filepath="$PROJECT_DIR$/FathomTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FathomAndroid.iml" filepath="$PROJECT_DIR$/FathomAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
