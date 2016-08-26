@@ -1,9 +1,10 @@
 {
-  "name": "fathom-test",
+  "name": "fathom-android-experiments",
   "version": "0.0.1",
-  "description": "Using fathom in Android",
+  "description": "Experiments to use fathom in Android",
+  "repository": "https://github.com/mcomella/fathom-android-experiments",
   "main": "js/index.js",
-  "author": "",
+  "author": "Michael Comella (mcomella)",
   "license": "MPL-2.0",
   "dependencies": {
     "fathom-web": "^1.1.2"
